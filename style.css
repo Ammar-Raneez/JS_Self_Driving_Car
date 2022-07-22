@@ -8,3 +8,7 @@ body {
 #car-canvas {
   background-color: lightgrey;
 }
+
+#network-canvas {
+  background-color: black;
+}
