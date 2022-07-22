@@ -15,10 +15,14 @@ const cars = generateAICars(N);
 let bestCar = cars[0];
 
 if (localStorage.getItem('bestBrain')) {
-  cars.forEach((car) => {
+  cars.forEach((car, i) => {
     car.brain = JSON.parse(
       localStorage.getItem('bestBrain')
     );
+
+    if (i != 0) {
+      NeuralNetwork.mutate(car.brain, 0.2);
+    }
   });
 }
 

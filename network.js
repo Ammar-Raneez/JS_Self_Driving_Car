@@ -23,6 +23,28 @@ class NeuralNetwork {
 
     return outputs;
   }
+
+  static mutate(network, amount = 1) {
+    network.levels.forEach(level => {
+      for (let i = 0; i < level.biases.length; i++) {
+        level.biases[i] = lerp(
+          level.biases[i],
+          Math.random() * 2 - 1,
+          amount
+        )
+      }
+
+      for (const element of level.weights) {
+        for (let j = 0; j < element.length; j++) {
+          element[j] = lerp(
+            element[j],
+            Math.random() * 2 - 1,
+            amount
+          )
+        }
+      }
+    });
+  }
 }
 class Level {
   constructor(inputCount, outputCount) {
